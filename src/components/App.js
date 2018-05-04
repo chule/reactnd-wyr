@@ -19,27 +19,25 @@ class App extends Component {
       <div className="App">
         <LoadingBar />
 
-        {!this.props.loading &&
+        <Fragment>
+          <header className="App-header">
+            <h1 className="App-title">Would You Rather?</h1>
+          </header>
 
-          <Fragment>
-            <header className="App-header">
-              <h1 className="App-title">Would You Rather?</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-            <LogIn />
-          </Fragment>
-        }
+        </Fragment>
+
+        <LogIn />
 
       </div>
     );
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser: users[authedUser] ? users[authedUser] : null
   }
 }
 
