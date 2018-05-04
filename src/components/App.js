@@ -5,6 +5,7 @@ import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from "../actions/shared"
 import './App.css';
 import LogIn from './LogIn'
+import QuestionList from './QuestionsList'
 
 
 
@@ -27,6 +28,8 @@ class App extends Component {
         </Fragment>
 
         <LogIn />
+
+        <QuestionList mode='answered'/>
 
       </div>
     );

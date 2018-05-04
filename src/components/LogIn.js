@@ -19,14 +19,17 @@ class LogIn extends Component {
                 {!authedUser
                     ? <div>
                         <h2>Please log in</h2>
-                        {users.map(user => {
+                        {Object.keys(users).map(userid => {
+                            return users[userid]
+                        }).map(user => {
                             return <button key={user.id} onClick={() => this.handleOnClick(user.id)}>
                                 {user.name}
                             </button>
                         })}
                     </div>
                     : <button onClick={() => this.handleOnClick(null)}>
-                        Log out {authedUser}
+                        {console.log(users)}
+                        Log out {users[authedUser].name}
                     </button>
                 }
 
@@ -39,9 +42,7 @@ class LogIn extends Component {
 
 function mapStateToProps({ authedUser, users }) {
     return {
-        users: Object.keys(users).map(userid => {
-            return users[userid]
-        }),
+        users: users,
         authedUser
     }
 }
