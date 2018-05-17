@@ -6,6 +6,8 @@ import { handleInitialData } from "../actions/shared"
 import './App.css';
 import LogIn from './LogIn'
 import QuestionList from './QuestionsList'
+import Leaderboard from '../containers/Leaderboard'
+import Nav from '../containers/Nav'
 
 
 
@@ -17,21 +19,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <LoadingBar />
+      <Router>
+        <div className="App">
+          <LoadingBar />
 
-        <Fragment>
           <header className="App-header">
             <h1 className="App-title">Would You Rather?</h1>
+
           </header>
+          {this.props.authedUser && <Nav />}
 
-        </Fragment>
 
-        <LogIn />
+          <Route path='/' exact component={LogIn} />
+          {/* <Route path='/users/:id' component={TweetPage} /> */}
+          <Route path='/leaderboard' component={Leaderboard} />
+          <Route path='/questions' component={QuestionList} />
 
-        <QuestionList mode='answered'/>
+          {this.props.authedUser && 
+          <Fragment>
+            <QuestionList mode="unanswered"/>
+            <QuestionList mode="answered"/>
+          </Fragment>
+          }
 
-      </div>
+        </div>
+      </Router>
     );
   }
 }

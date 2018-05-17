@@ -14,7 +14,7 @@ class QuestionsList extends Component {
 
         return (
             <Fragment>
-                <h2>Would You Rather?</h2>
+                <h2>{mode.toUpperCase()}</h2>
 
                 <table>
                     <tbody>
@@ -38,9 +38,9 @@ class QuestionsList extends Component {
                             .map(q => {
                                 return (
                                     <tr key={q} onClick={() => this.handleOnClick(q)}>
-                                        <td>{questions[q].optionOne.text}</td>
+                                        <td className="option">{questions[q].optionOne.text}</td>
                                         <td>- or -</td>
-                                        <td>{questions[q].optionTwo.text}</td>
+                                        <td className="option">{questions[q].optionTwo.text}</td>
                                     </tr>)
                             })}
                     </tbody>

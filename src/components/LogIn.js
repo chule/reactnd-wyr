@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { setAuthedUser } from '../actions/authedUser'
 
+
 class LogIn extends Component {
 
     handleOnClick = (uid) => {
@@ -28,14 +29,11 @@ class LogIn extends Component {
                         })}
                     </div>
                     : <button onClick={() => this.handleOnClick(null)}>
-                        {console.log(users)}
                         Log out {users[authedUser].name}
+
                     </button>
                 }
-
-
             </div>
-
         )
     }
 }
