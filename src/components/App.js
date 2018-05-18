@@ -33,21 +33,15 @@ class App extends Component {
 
           {/* <Route path='/' exact component={LogIn} /> */}
           {/* <Route path='/users/:id' component={TweetPage} /> */}
-          <Route path='/leaderboard' component={() => (this.props.authedUser && <Leaderboard />)} />
-          <Route path='/add' component={() => (this.props.authedUser && <Add />)} />
-          <Route path='/' exact component={() => (this.props.authedUser &&
+          <Route path='/leaderboard' render={() => (this.props.authedUser && <Leaderboard />)} />
+          <Route path='/add' render={() => (this.props.authedUser && <Add />)} />
+          <Route path='/' exact render={() => (this.props.authedUser &&
             <Fragment>
               <QuestionList mode="unanswered" />
               <QuestionList mode="answered" />
             </Fragment>
           )} />
 
-          {/* {this.props.authedUser && 
-          <Fragment>
-            <QuestionList mode="unanswered"/>
-            <QuestionList mode="answered"/>
-          </Fragment>
-          } */}
           {!this.props.authedUser && <LogIn />}
 
 
