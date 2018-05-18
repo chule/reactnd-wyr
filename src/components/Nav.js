@@ -9,7 +9,7 @@ export default function Nav({ dispatch, authedUser }) {
                 <ul>
                     <li>
                         <NavLink to='/' exact activeClassName='active'>
-                            Home
+                            Questions
                     </NavLink>
                     </li>
                     <li>
@@ -17,14 +17,14 @@ export default function Nav({ dispatch, authedUser }) {
                             Leaderboard
                     </NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to='/questions' exact activeClassName='active'>
                             Questions
                     </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to='/add' exact activeClassName='active'>
-                            Add quesion
+                            Add question
                     </NavLink>
                     </li>
                     <li>

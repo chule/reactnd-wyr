@@ -8,6 +8,7 @@ import LogIn from './LogIn'
 import QuestionList from './QuestionsList'
 import Leaderboard from '../containers/Leaderboard'
 import Nav from '../containers/Nav'
+import Add from './Add'
 
 
 
@@ -30,17 +31,26 @@ class App extends Component {
           {this.props.authedUser && <Nav />}
 
 
-          <Route path='/' exact component={LogIn} />
+          {/* <Route path='/' exact component={LogIn} /> */}
           {/* <Route path='/users/:id' component={TweetPage} /> */}
-          <Route path='/leaderboard' component={Leaderboard} />
-          <Route path='/questions' component={QuestionList} />
+          <Route path='/leaderboard' component={() => (this.props.authedUser && <Leaderboard />)} />
+          <Route path='/add' component={() => (this.props.authedUser && <Add />)} />
+          <Route path='/' exact component={() => (this.props.authedUser &&
+            <Fragment>
+              <QuestionList mode="unanswered" />
+              <QuestionList mode="answered" />
+            </Fragment>
+          )} />
 
-          {this.props.authedUser && 
+          {/* {this.props.authedUser && 
           <Fragment>
             <QuestionList mode="unanswered"/>
             <QuestionList mode="answered"/>
           </Fragment>
-          }
+          } */}
+          {!this.props.authedUser && <LogIn />}
+
+
 
         </div>
       </Router>
