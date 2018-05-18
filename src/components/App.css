@@ -42,6 +42,11 @@ td.option {
   min-width: 270px;
 }
 
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;
@@ -62,4 +67,8 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
 }
