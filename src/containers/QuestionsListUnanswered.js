@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux"
-import QuestionsList from '../components/QuestionsList'
+import QuestionsListUnanswered from '../components/QuestionsListUnanswered'
 
 
 function mapStateToProps({ authedUser, questions }) {
@@ -11,4 +11,4 @@ function mapStateToProps({ authedUser, questions }) {
     }
 }
 
-export default connect(mapStateToProps)(QuestionsList)
+export default connect(mapStateToProps)(QuestionsListUnanswered)

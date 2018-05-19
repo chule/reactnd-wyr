@@ -5,7 +5,9 @@ import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from "../actions/shared"
 import './App.css';
 import LogIn from './LogIn'
-import QuestionsList from '../containers/QuestionsList'
+import QuestionsListAnswered from '../containers/QuestionsListAnswered'
+import QuestionsListUnanswered from '../containers/QuestionsListUnanswered'
+
 import Leaderboard from '../containers/Leaderboard'
 import Nav from '../containers/Nav'
 import Add from './Add'
@@ -35,14 +37,14 @@ class App extends Component {
           {/* <Route path='/users/:id' component={TweetPage} /> */}
           <Route path='/' exact render={() => (this.props.authedUser &&
 
-            <QuestionsList mode="unanswered" />
+            <QuestionsListUnanswered />
 
 
           )} />
           <Route path='/answered' exact render={() => (this.props.authedUser &&
 
 
-            <QuestionsList mode="answered" />
+            <QuestionsListAnswered />
 
           )} />
           <Route path='/leaderboard' render={() => (this.props.authedUser && <Leaderboard />)} />

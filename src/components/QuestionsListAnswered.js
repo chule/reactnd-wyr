@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 
-const QuestionsList = ({ authedUser, questions, mode }) => {
+const QuestionsList = ({ authedUser, questions }) => {
 
 
     let handleOnClick = (id) => {
@@ -9,26 +10,14 @@ const QuestionsList = ({ authedUser, questions, mode }) => {
 
     return (
         <Fragment>
-            <h2>{mode.toUpperCase()}</h2>
+            <h2>ANSWERED</h2>
 
             <table>
                 <tbody>
                     {Object.keys(questions)
                         .filter(q => {
-                            // show answered
-                            if (authedUser && mode === 'answered') {
-                                return (questions[q].optionOne.votes.includes(authedUser)
-                                    || questions[q].optionTwo.votes.includes(authedUser))
-                            }
-                            // show unanswered
-                            if (authedUser && mode === 'unanswered') {
-                                return (!questions[q].optionOne.votes.includes(authedUser)
-                                    && !questions[q].optionTwo.votes.includes(authedUser))
-                            }
-
-                            // show all in no authedUser
-                            return true
-
+                            return (questions[q].optionOne.votes.includes(authedUser)
+                                || questions[q].optionTwo.votes.includes(authedUser))
                         })
                         .map(q => {
                             return (
