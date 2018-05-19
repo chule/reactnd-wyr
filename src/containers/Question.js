@@ -4,7 +4,6 @@ import Question from '../components/Question'
 
 
 function mapStateToProps({ authedUser, questions, users }, props) {
-    console.log(props)
     const { id } = props.match.params
 
     return {

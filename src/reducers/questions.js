@@ -7,8 +7,7 @@ const questions = (state = {}, action) => {
                 ...state,
                 ...action.questions
             }
-
-        // authedUser, qid, answer    
+ 
         case ANSWER_QUESTION:
             return {
                 ...state,
@@ -20,16 +19,6 @@ const questions = (state = {}, action) => {
                     }
                 }
             }
-           
-            // ...questions,
-            // [qid]: {
-            //   ...questions[qid],
-            //   [answer]: {
-            //     ...questions[qid][answer],
-            //     votes: questions[qid][answer].votes.concat([authedUser])
-            //   }
-            // }            
-
 
         case ADD_QUESTION:
             return {
