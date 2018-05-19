@@ -1,63 +1,51 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from "react-redux"
+import React, { Fragment } from 'react'
 
-class QuestionsList extends Component {
+const QuestionsList = ({ authedUser, questions, mode }) => {
 
 
-    handleOnClick = (id) => {
+    let handleOnClick = (id) => {
         console.log(id)
     }
 
-    render() {
+    return (
+        <Fragment>
+            <h2>{mode.toUpperCase()}</h2>
 
-        const { authedUser, questions, mode } = this.props
-
-        return (
-            <Fragment>
-                <h2>{mode.toUpperCase()}</h2>
-
-                <table>
-                    <tbody>
-                        {Object.keys(questions)
-                            .filter(q => {
-                                // show answered
-                                if (authedUser && mode === 'answered') {
-                                    return (questions[q].optionOne.votes.includes(authedUser) 
+            <table>
+                <tbody>
+                    {Object.keys(questions)
+                        .filter(q => {
+                            // show answered
+                            if (authedUser && mode === 'answered') {
+                                return (questions[q].optionOne.votes.includes(authedUser)
                                     || questions[q].optionTwo.votes.includes(authedUser))
-                                }
-                                // show unanswered
-                                if (authedUser && mode === 'unanswered') {
-                                    return (!questions[q].optionOne.votes.includes(authedUser) 
+                            }
+                            // show unanswered
+                            if (authedUser && mode === 'unanswered') {
+                                return (!questions[q].optionOne.votes.includes(authedUser)
                                     && !questions[q].optionTwo.votes.includes(authedUser))
-                                }
+                            }
 
-                                // show all in no authedUser
-                                return true
-                                
-                            })
-                            .map(q => {
-                                return (
-                                    <tr key={q} onClick={() => this.handleOnClick(q)}>
-                                        <td className="option">{questions[q].optionOne.text}</td>
-                                        <td>- or -</td>
-                                        <td className="option">{questions[q].optionTwo.text}</td>
-                                    </tr>)
-                            })}
-                    </tbody>
-                </table>
+                            // show all in no authedUser
+                            return true
+
+                        })
+                        .map(q => {
+                            return (
+                                <tr key={q} onClick={() => handleOnClick(q)}>
+                                    <td className="option">{questions[q].optionOne.text}</td>
+                                    <td>- or -</td>
+                                    <td className="option">{questions[q].optionTwo.text}</td>
+                                </tr>)
+                        })}
+                </tbody>
+            </table>
 
 
-            </Fragment>
-        )
-    }
+        </Fragment>
+    )
+
 }
 
-function mapStateToProps({ authedUser, questions }) {
 
-    return {
-        authedUser,
-        questions
-    }
-}
-
-export default connect(mapStateToProps)(QuestionsList)
+export default QuestionsList

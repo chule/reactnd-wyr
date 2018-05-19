@@ -2,16 +2,22 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
-export default function Nav({ dispatch, authedUser }) {
+export default function Nav({ dispatch, authedUser, users }) {
     return (
         <div>
             <nav className='nav'>
                 <ul>
                     <li>
                         <NavLink to='/' exact activeClassName='active'>
-                            Questions
+                            Unanswered Questions
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/answered' exact activeClassName='active'>
+                            Answered Questions
+                        </NavLink>
+                    </li>
+
                     <li>
                         <NavLink to='/leaderboard' exact activeClassName='active'>
                             Leaderboard
@@ -31,7 +37,7 @@ export default function Nav({ dispatch, authedUser }) {
                             }}
 
                         >
-                            Log out {authedUser}
+                            Log out {`[${users[authedUser].name}]`}
                         </Link>
 
                     </li>

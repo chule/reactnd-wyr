@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from "react-redux"
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from "../actions/shared"
 import './App.css';
 import LogIn from './LogIn'
-import QuestionList from './QuestionsList'
+import QuestionsList from '../containers/QuestionsList'
 import Leaderboard from '../containers/Leaderboard'
 import Nav from '../containers/Nav'
 import Add from './Add'
@@ -34,10 +34,16 @@ class App extends Component {
           {/* <Route path='/' exact component={LogIn} /> */}
           {/* <Route path='/users/:id' component={TweetPage} /> */}
           <Route path='/' exact render={() => (this.props.authedUser &&
-            <Fragment>
-              <QuestionList mode="unanswered" />
-              <QuestionList mode="answered" />
-            </Fragment>
+
+            <QuestionsList mode="unanswered" />
+
+
+          )} />
+          <Route path='/answered' exact render={() => (this.props.authedUser &&
+
+
+            <QuestionsList mode="answered" />
+
           )} />
           <Route path='/leaderboard' render={() => (this.props.authedUser && <Leaderboard />)} />
           <Route path='/add' render={() => (this.props.authedUser && <Add />)} />
