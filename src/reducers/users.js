@@ -14,9 +14,9 @@ const users = (state = {}, action) => {
             return {
                 ...state,
                 [action.authedUser]: {
-                    ...users[action.authedUser],
+                    ...state[action.authedUser],
                     answers: {
-                        ...users[action.authedUser].answers,
+                        ...state[action.authedUser].answers,
                         [action.qid]: action.answer
                     }
                 }

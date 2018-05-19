@@ -11,6 +11,7 @@ import QuestionsListUnanswered from '../containers/QuestionsListUnanswered'
 import Leaderboard from '../containers/Leaderboard'
 import Nav from '../containers/Nav'
 import Add from './Add'
+import Question from '../containers/Question'
 
 
 
@@ -32,28 +33,21 @@ class App extends Component {
           </header>
           {this.props.authedUser && <Nav />}
 
-
-          {/* <Route path='/' exact component={LogIn} /> */}
-          {/* <Route path='/users/:id' component={TweetPage} /> */}
           <Route path='/' exact render={() => (this.props.authedUser &&
-
             <QuestionsListUnanswered />
-
-
           )} />
-          <Route path='/answered' exact render={() => (this.props.authedUser &&
 
-
+          <Route path='/answered'  render={() => (this.props.authedUser &&
             <QuestionsListAnswered />
-
           )} />
+          <Route path='/question/:id'  render={() => (this.props.authedUser &&
+            <Question />
+          )} />
+
           <Route path='/leaderboard' render={() => (this.props.authedUser && <Leaderboard />)} />
           <Route path='/add' render={() => (this.props.authedUser && <Add />)} />
 
-
           {!this.props.authedUser && <LogIn />}
-
-
 
         </div>
       </Router>

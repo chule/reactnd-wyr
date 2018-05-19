@@ -13,14 +13,24 @@ const questions = (state = {}, action) => {
             return {
                 ...state,
                 [action.qid]: {
-                    ...questions[action.qid],
+                    ...state[action.qid],
                     [action.answer]: {
-                        ...questions[action.qid][action.answer],
-                        votes: questions[action.qid][action.answer].votes.concat([action.authedUser])
+                        ...state[action.qid][action.answer],
+                        votes: state[action.qid][action.answer].votes.concat([action.authedUser])
                     }
                 }
             }
-            
+           
+            // ...questions,
+            // [qid]: {
+            //   ...questions[qid],
+            //   [answer]: {
+            //     ...questions[qid][answer],
+            //     votes: questions[qid][answer].votes.concat([authedUser])
+            //   }
+            // }            
+
+
         case ADD_QUESTION:
             return {
                 ...state,

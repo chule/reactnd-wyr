@@ -1,12 +1,7 @@
 import React, { Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 const QuestionsList = ({ authedUser, questions }) => {
-
-
-    let handleOnClick = (id) => {
-        console.log(id)
-    }
 
     return (
         <Fragment>
@@ -16,16 +11,20 @@ const QuestionsList = ({ authedUser, questions }) => {
                 <tbody>
                     {Object.keys(questions)
                         .filter(q => {
-                                return (!questions[q].optionOne.votes.includes(authedUser)
-                                    && !questions[q].optionTwo.votes.includes(authedUser))
+                            return (!questions[q].optionOne.votes.includes(authedUser)
+                                && !questions[q].optionTwo.votes.includes(authedUser))
                         })
                         .map(q => {
                             return (
-                                <tr key={q} onClick={() => handleOnClick(q)}>
+
+                                <tr key={q}>
                                     <td className="option">{questions[q].optionOne.text}</td>
                                     <td>- or -</td>
                                     <td className="option">{questions[q].optionTwo.text}</td>
-                                </tr>)
+                                    <td><Link to={`/question/${q}`}>ANSWER</Link></td>
+                                </tr>
+
+                            )
                         })}
                 </tbody>
             </table>
@@ -37,4 +36,4 @@ const QuestionsList = ({ authedUser, questions }) => {
 }
 
 
-export default QuestionsList
+export default withRouter(QuestionsList)
