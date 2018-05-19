@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function Add() {
-    return(
+const Add = () => {
+    return (
         "add new question"
     )
 }
+
+export default Add

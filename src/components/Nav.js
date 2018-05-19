@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 export default function Nav({ dispatch, authedUser }) {
@@ -10,34 +10,29 @@ export default function Nav({ dispatch, authedUser }) {
                     <li>
                         <NavLink to='/' exact activeClassName='active'>
                             Questions
-                    </NavLink>
+                        </NavLink>
                     </li>
                     <li>
                         <NavLink to='/leaderboard' exact activeClassName='active'>
                             Leaderboard
-                    </NavLink>
+                        </NavLink>
                     </li>
-                    {/* <li>
-                        <NavLink to='/questions' exact activeClassName='active'>
-                            Questions
-                    </NavLink>
-                    </li> */}
                     <li>
                         <NavLink to='/add' exact activeClassName='active'>
                             Add question
-                    </NavLink>
+                        </NavLink>
                     </li>
                     <li>
-                        <NavLink
+                        <Link
                             to='/'
                             onClick={() => {
                                 console.log("log out")
                                 dispatch(setAuthedUser(null))
                             }}
-                            exact
-                            activeClassName='active'>
+
+                        >
                             Log out {authedUser}
-                    </NavLink>
+                        </Link>
 
                     </li>
                 </ul>

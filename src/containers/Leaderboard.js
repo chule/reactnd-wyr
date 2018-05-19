@@ -1,6 +1,5 @@
-import { connect } from "react-redux";
-import Leaderboard from '../components/Leaderboard';
-
+import { connect } from "react-redux"
+import Leaderboard from '../components/Leaderboard'
 
 function mapStateToProps({ users }) {
 
