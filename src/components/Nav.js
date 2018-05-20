@@ -32,12 +32,10 @@ export default function Nav({ dispatch, authedUser, users }) {
                         <Link
                             to='/'
                             onClick={() => {
-                                console.log("log out")
                                 dispatch(setAuthedUser(null))
                             }}
-
                         >
-                            Log out {`[${users[authedUser].name}]`}
+                            Sign out {`[${users[authedUser].name}]`}
                         </Link>
 
                     </li>

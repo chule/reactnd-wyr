@@ -34,7 +34,7 @@ tr:hover {background-color: hsl(0, 0%, 69%);}
 
 th, td {
   padding: 15px;
-  text-align: left;
+  /* text-align: left; */
 }
 
 td.option {
@@ -77,3 +77,21 @@ li {
   border-radius: 25px;
   margin: 4px;
 }
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.login {
+  /* display: flex;
+  justify-content: center; */
+  cursor: pointer;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.login:hover {background-color: hsl(0, 0%, 90%);}

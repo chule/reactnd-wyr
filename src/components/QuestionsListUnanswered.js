@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
 class QuestionsList extends Component {
@@ -15,7 +15,7 @@ class QuestionsList extends Component {
     }
 
     render() {
-        const { authedUser, questions } = this.props
+        const { questions, questionListFiltered } = this.props
 
         return this.state.redirect
             ? <Redirect to={`/question/${this.state.redirect}`} />
@@ -24,18 +24,14 @@ class QuestionsList extends Component {
 
                 <table>
                     <tbody>
-                        {Object.keys(questions)
-                            .filter(q => {
-                                return (!questions[q].optionOne.votes.includes(authedUser)
-                                    && !questions[q].optionTwo.votes.includes(authedUser))
-                            })
+                        {questionListFiltered
                             .map(q => {
                                 return (
 
                                     <tr key={q} onClick={() => this.handleOnClick(q)}>
-                                        <td className="option">{questions[q].optionOne.text}</td>
-                                        <td>- or -</td>
-                                        <td className="option">{questions[q].optionTwo.text}</td>
+                                        <td className="option align-right">{questions[q].optionOne.text}</td>
+                                        <td> OR </td>
+                                        <td className="option align-left">{questions[q].optionTwo.text}</td>
                                     </tr>
 
                                 )

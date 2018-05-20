@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+//import { Redirect } from 'react-router-dom'
 
-const QuestionsList = ({ authedUser, questions }) => {
+const QuestionsList = ({ questions, questionListFiltered }) => {
 
 
     let handleOnClick = (id) => {
@@ -14,17 +14,13 @@ const QuestionsList = ({ authedUser, questions }) => {
 
             <table>
                 <tbody>
-                    {Object.keys(questions)
-                        .filter(q => {
-                            return (questions[q].optionOne.votes.includes(authedUser)
-                                || questions[q].optionTwo.votes.includes(authedUser))
-                        })
+                    {questionListFiltered
                         .map(q => {
                             return (
                                 <tr key={q} onClick={() => handleOnClick(q)}>
-                                    <td className="option">{questions[q].optionOne.text}</td>
-                                    <td>- or -</td>
-                                    <td className="option">{questions[q].optionTwo.text}</td>
+                                    <td className="option align-right">{questions[q].optionOne.text}</td>
+                                    <td> OR </td>
+                                    <td className="option align-left">{questions[q].optionTwo.text}</td>
                                 </tr>)
                         })}
                 </tbody>

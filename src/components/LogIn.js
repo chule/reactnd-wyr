@@ -1,37 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { setAuthedUser } from '../actions/authedUser'
-
+import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class LogIn extends Component {
 
     handleOnClick = (uid) => {
-        //console.log(setAuthedUser)
         this.props.dispatch(setAuthedUser(uid))
     }
 
     render() {
-        const { users, authedUser } = this.props
+        const { users, authedUser, location } = this.props
+
+        if (authedUser) {
+            return null
+        }
+
+        if (location.pathname !== '/') {
+            return <Redirect to='/' />
+        }
 
         return (
 
             <div>
 
-                {!authedUser
-                    ? <div>
-                        <h2>Please log in</h2>
-                        {Object.keys(users).map(userid => {
-                            return users[userid]
-                        }).map(user => {
-                            return <button key={user.id} onClick={() => this.handleOnClick(user.id)}>
-                                {user.name}
-                            </button>
-                        })}
-                    </div>
-                    : <button onClick={() => this.handleOnClick(null)}>
-                        Log out {users[authedUser].name}
-
-                    </button>
+                {<div>
+                    <h2>Please sign in</h2>
+                    {Object.keys(users).map(userid => {
+                        return users[userid]
+                    }).map(user => <div className='login' key={user.id} onClick={() => this.handleOnClick(user.id)}>
+                        <div>
+                            <div><img alt='avatar' className='avatar' src={user.avatarURL} /></div>
+                            <div>{user.name}</div>
+                        </div>
+                    </div>)}
+                </div>
                 }
             </div>
         )
@@ -45,4 +49,4 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
 
-export default connect(mapStateToProps)(LogIn)
+export default withRouter(connect(mapStateToProps)(LogIn))

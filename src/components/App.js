@@ -47,7 +47,7 @@ class App extends Component {
           <Route path='/leaderboard' render={() => (this.props.authedUser && <Leaderboard />)} />
           <Route path='/add' render={() => (this.props.authedUser && <Add />)} />
 
-          {!this.props.authedUser && <LogIn />}
+          <LogIn />
 
         </div>
       </Router>

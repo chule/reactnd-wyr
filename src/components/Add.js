@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Add = () => {
-    return (
-        "add new question"
-    )
+class Add extends Component {
+    render() {
+        return (
+            <div>
+                "add new question"
+            </div>
+        )
+    }
 }
 
 export default Add

@@ -6,8 +6,11 @@ import QuestionsListUnanswered from '../components/QuestionsListUnanswered'
 function mapStateToProps({ authedUser, questions }) {
 
     return {
-        authedUser,
-        questions
+        questions,
+        questionListFiltered: Object.keys(questions).filter(q => {
+            return (!questions[q].optionOne.votes.includes(authedUser)
+                && !questions[q].optionTwo.votes.includes(authedUser))
+        })
     }
 }
 

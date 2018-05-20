@@ -17,7 +17,7 @@ class Question extends Component {
     }
 
     render() {
-        const { authedUser, questions, id, dispatch } = this.props
+        const { authedUser, questions, id } = this.props
         const { handleOnClick } = this
 
         if (this.state.toHome) {
