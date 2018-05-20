@@ -3,9 +3,7 @@
 
 ## Getting Started
 
-The project uses Node.js and the Create-React-App starter.  If you do not have Node >= 6.x installed, you can download it here: [Node.js](https://nodejs.org/en/)
-
-After downloading or clonning the repository please run npm install or yarn from inside the repository directory.
+After downloading or cloning the repository please run npm install or yarn from inside the repository directory.
 ```
 git clone https://github.com/chule/reactnd-wyr.git
 npm install
