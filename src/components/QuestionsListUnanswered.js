@@ -1,39 +1,52 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-const QuestionsList = ({ authedUser, questions }) => {
+class QuestionsList extends Component {
 
-    return (
-        <Fragment>
-            <h2>UNANSWERED</h2>
+    state = {
+        redirect: null
+    }
 
-            <table>
-                <tbody>
-                    {Object.keys(questions)
-                        .filter(q => {
-                            return (!questions[q].optionOne.votes.includes(authedUser)
-                                && !questions[q].optionTwo.votes.includes(authedUser))
-                        })
-                        .map(q => {
-                            return (
+    handleOnClick = (q) => {
+        this.setState(() => {
+            return { redirect: q }
+        })
+    }
 
-                                <tr key={q}>
-                                    <td className="option">{questions[q].optionOne.text}</td>
-                                    <td>- or -</td>
-                                    <td className="option">{questions[q].optionTwo.text}</td>
-                                    <td><Link to={`/question/${q}`}>ANSWER</Link></td>
-                                </tr>
+    render() {
+        const { authedUser, questions } = this.props
 
-                            )
-                        })}
-                </tbody>
-            </table>
+        return this.state.redirect
+            ? <Redirect to={`/question/${this.state.redirect}`} />
+            : <Fragment>
+                <h2>UNANSWERED</h2>
+
+                <table>
+                    <tbody>
+                        {Object.keys(questions)
+                            .filter(q => {
+                                return (!questions[q].optionOne.votes.includes(authedUser)
+                                    && !questions[q].optionTwo.votes.includes(authedUser))
+                            })
+                            .map(q => {
+                                return (
+
+                                    <tr key={q} onClick={() => this.handleOnClick(q)}>
+                                        <td className="option">{questions[q].optionOne.text}</td>
+                                        <td>- or -</td>
+                                        <td className="option">{questions[q].optionTwo.text}</td>
+                                    </tr>
+
+                                )
+                            })}
+                    </tbody>
+                </table>
 
 
-        </Fragment>
-    )
+            </Fragment>
 
+    }
 }
-
 
 export default withRouter(QuestionsList)
