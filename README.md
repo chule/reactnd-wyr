@@ -18,7 +18,7 @@ A new browser window should automatically open displaying the app.  If it doesn'
 
 ## Project Overview
 
-"Would You Rather?" lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. 
+Project lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. 
 
 In the app, users are able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
