@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
 class QuestionsList extends Component{
@@ -20,7 +19,7 @@ class QuestionsList extends Component{
         return this.state.redirect
             ? <Redirect to={`/question/${this.state.redirect}`} />
             : <Fragment>
-                <h2>UNANSWERED</h2>
+                <h2>ANSWERED</h2>
 
                 <table>
                     <tbody>

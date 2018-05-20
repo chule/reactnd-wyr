@@ -5,7 +5,7 @@ const Leaderboard = ({ users }) => {
 
     return (
         <div>
-            <table>
+            <table className='leaderboard'>
                 <thead>
                     <tr>
                         <td>Name</td>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { handleAnswerQuestion } from '../actions/questions'
-import { Redirect } from 'react-router-dom'
 import SvgIcon from '../utils/SvgIcon'
 
 
