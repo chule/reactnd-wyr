@@ -8,6 +8,7 @@ function mapStateToProps({ authedUser, questions, users }, props) {
 
     return {
         id,
+        users,
         questions,
         authedUser,
         dispatch: props.dispatch
